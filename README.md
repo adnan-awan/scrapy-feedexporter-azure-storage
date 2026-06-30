@@ -2,11 +2,11 @@
 [Scrapy feed export storage backend](https://doc.scrapy.org/en/latest/topics/feed-exports.html#storage-backends) for [Azure Storage](https://docs.microsoft.com/en-us/azure/storage/).
 
 ## Requirements
--  Python 3.8+
+-  Python 3.10+
 
 ## Installation
 ```bash
-pip install git+https://github.com/scrapy-plugins/scrapy-feedexporter-azure-storage
+pip install scrapy-feedexporter-azure-storage
 ```
 ## Usage
 * Add this storage backend to the [FEED_STORAGES](https://docs.scrapy.org/en/latest/topics/feed-exports.html#std-setting-FEED_STORAGES) Scrapy setting. For example:
