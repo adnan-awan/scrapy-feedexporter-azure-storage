@@ -1,14 +1,14 @@
 [build-system]
-requires = ["setuptools>=77.0.3"]
-build-backend = "setuptools.build_meta"
+requires = ["hatchling>=1.27.0"]
+build-backend = "hatchling.build"
 
 [project]
 name = "scrapy-feedexporter-azure-storage"
-version = "0.0.2"
+version = "0.1.0"
 description = "Scrapy Feed Exporter for Azure Storage"
 readme = "README.md"
 requires-python = ">=3.10"
-license = "BSD-3-Clause"
+license = "Apache-2.0"
 license-files = ["LICENSE"]
 authors = [{ name = "Zyte", email = "opensource@zyte.com" }]
 dependencies = [
@@ -19,6 +19,7 @@ classifiers = [
     "Development Status :: 4 - Beta",
     "Framework :: Scrapy",
     "Intended Audience :: Developers",
+    "License :: OSI Approved :: Apache Software License",
     "Operating System :: OS Independent",
     "Programming Language :: Python",
     "Programming Language :: Python :: 3",
@@ -36,19 +37,29 @@ Homepage = "https://github.com/scrapy-plugins/scrapy-feedexporter-azure-storage"
 Source = "https://github.com/scrapy-plugins/scrapy-feedexporter-azure-storage"
 Issues = "https://github.com/scrapy-plugins/scrapy-feedexporter-azure-storage/issues"
 
-[tool.setuptools.packages.find]
-include = ["scrapy_azure_exporter*"]
-exclude = ["tests*"]
+[tool.hatch.build.targets.wheel]
+packages = ["scrapy_azure_exporter"]
+
+[tool.hatch.build.targets.sdist]
+include = [
+    "/scrapy_azure_exporter",
+    "/tests",
+    "/README.md",
+    "/CHANGES.rst",
+    "/LICENSE",
+]
 
 [tool.bumpversion]
-current_version = "0.0.2"
 commit = true
 tag = true
 tag_name = "{new_version}"
-allow_dirty = false
 
 [[tool.bumpversion.files]]
 filename = "pyproject.toml"
-regex = true
-search = '(?m)^version = "{current_version}"$'
+search = 'version = "{current_version}"'
 replace = 'version = "{new_version}"'
+
+[[tool.bumpversion.files]]
+filename = "CHANGES.rst"
+search = '{current_version} (unreleased)'
+replace = '{current_version} ({now:%Y-%m-%d})'
