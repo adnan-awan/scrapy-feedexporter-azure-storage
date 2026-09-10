@@ -56,5 +56,5 @@ tag_name = "{new_version}"
 
 [[tool.bumpversion.files]]
 filename = "CHANGES.rst"
-search = '{current_version} (unreleased)'
-replace = '{current_version} ({now:%Y-%m-%d})'
+search = '{new_version} (unreleased)'
+replace = '{new_version} ({now:%Y-%m-%d})'
